@@ -1,9 +1,12 @@
 /* Глобальные стили для проекта, их можно дополнять и менять по желанию */
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -18,19 +21,23 @@ h3,
 h4,
 h5,
 h6,
-p {
-  margin: 0;
-}
-
+p,
 ul {
   margin: 0;
   padding: 0;
+}
+
+ul {
   list-style: none;
 }
 
 picture {
   margin: 0;
   padding: 0;
+}
+
+img {
+  max-inline-size: 100%;
 }
 
 button,
