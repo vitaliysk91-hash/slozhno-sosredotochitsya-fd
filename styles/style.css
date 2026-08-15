@@ -12,8 +12,7 @@
   background-attachment: fixed;
 }
 
-.header,
-.footer {
+.decorated-zone {
   position: relative;
   display: grid;
   block-size: 100vh;
@@ -25,26 +24,28 @@
   align-items: start;
 }
 
-.decorated-zone::before,
+.decorated-zone::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inline-size: 25px;
+  block-size: 25px;
+  border-block-start: 1px solid var(--section-title-color, #ff0070);
+  border-inline-end: 1px solid var(--section-title-color, #ff0070);
+  pointer-events: none;
+  inset-block-start: 10px;
+  inset-inline-end: 10px;
+}
+
 .decorated-zone::after {
   content: "";
   position: absolute;
   z-index: 1;
   inline-size: 25px;
   block-size: 25px;
-  pointer-events: none;
-}
-
-.decorated-zone::before {
-  border-block-start: 1px solid var(--section-title-color, #ff0070);
-  border-inline-end: 1px solid var(--section-title-color, #ff0070);
-  inset-block-start: 10px;
-  inset-inline-end: 10px;
-}
-
-.decorated-zone::after {
   border-block-end: 1px solid var(--section-title-color, #ff0070);
   border-inline-start: 1px solid var(--section-title-color, #ff0070);
+  pointer-events: none;
   inset-block-end: 10px;
   inset-inline-start: 10px;
 }
@@ -119,16 +120,12 @@
   pointer-events: none;
 }
 
-.page-title,
-.footer__title {
-  color: var(--brand-color, #db00ff);
-  font-weight: 700;
-  line-height: 0.825;
-}
-
 .page-title {
   z-index: 2;
+  color: var(--brand-color, #db00ff);
   font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-weight: 700;
+  line-height: 0.825;
   text-shadow: 4px 4px 0 var(--accent-color, #ff0070);
   white-space: pre-line;
 }
@@ -139,14 +136,8 @@
   font-weight: 700;
 }
 
-.title-decor {
-  color: var(--contrast-text-color, #000028);
-  background-color: var(--accent-color, #ff0070);
-}
-
 .main {
   display: grid;
-  background-color: var(--page-background-color, #000028);
   gap: 50px;
   padding: 40px 10px;
 }
@@ -161,6 +152,11 @@
   font-size: inherit;
   font-weight: 700;
   line-height: inherit;
+}
+
+.title-decor {
+  color: var(--contrast-text-color, #000028);
+  background-color: var(--accent-color, #ff0070);
 }
 
 .articles-list {
@@ -190,12 +186,13 @@
 }
 
 .link {
+  border-block-end: 1px solid transparent;
   text-decoration: none;
   text-shadow: 2px 2px 0 var(--accent-color, #ff0070);
 }
 
 .link:hover {
-  text-decoration: underline;
+  border-block-end-color: currentColor;
 }
 
 .link:focus {
@@ -244,17 +241,18 @@
 
 .footer {
   place-items: center;
-  background-color: var(--page-background-color, #000028);
 }
 
 .footer__title {
+  color: var(--brand-color, #db00ff);
   font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-weight: 700;
+  line-height: 0.825;
   text-shadow: 2px 2px 0 var(--accent-color, #ff0070);
 }
 
 @media (width >= 768px) {
-  .header,
-  .footer {
+  .decorated-zone {
     padding: 20px;
   }
 

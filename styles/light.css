@@ -25,6 +25,7 @@
     --accent-transparent-color: rgb(50 49 45 / 0.4);
     --contrast-text-color: #353430;
     --section-title-color: #353430;
+    --cover-image: url("../images/cover-image-light.png");
     --rec-visibility: hidden;
   }
 }
